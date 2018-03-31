@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bikes", "Bikes\Bikes.csproj", "{81D5A989-6B1C-4F74-8C27-95BC4B7E27B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{BAC8E47D-07E7-4EF4-B4B5-933A6BF7A0A6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{81D5A989-6B1C-4F74-8C27-95BC4B7E27B6} = {81D5A989-6B1C-4F74-8C27-95BC4B7E27B6}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81D5A989-6B1C-4F74-8C27-95BC4B7E27B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81D5A989-6B1C-4F74-8C27-95BC4B7E27B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81D5A989-6B1C-4F74-8C27-95BC4B7E27B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81D5A989-6B1C-4F74-8C27-95BC4B7E27B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAC8E47D-07E7-4EF4-B4B5-933A6BF7A0A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAC8E47D-07E7-4EF4-B4B5-933A6BF7A0A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAC8E47D-07E7-4EF4-B4B5-933A6BF7A0A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAC8E47D-07E7-4EF4-B4B5-933A6BF7A0A6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8393FD65-B521-46BD-80FB-7F6F12DF91AE}
+	EndGlobalSection
+EndGlobal

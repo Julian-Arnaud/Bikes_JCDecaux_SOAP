@@ -1,0 +1,6 @@
+C:\Users\user\source\repos\Bikes\Bikes\bin\Release\Bikes.dll.config
+C:\Users\user\source\repos\Bikes\Bikes\bin\Release\Bikes.dll
+C:\Users\user\source\repos\Bikes\Bikes\bin\Release\Bikes.pdb
+C:\Users\user\source\repos\Bikes\Bikes\obj\Release\Bikes.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\Bikes\Bikes\obj\Release\Bikes.dll
+C:\Users\user\source\repos\Bikes\Bikes\obj\Release\Bikes.pdb

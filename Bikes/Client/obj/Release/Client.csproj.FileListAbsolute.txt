@@ -1,0 +1,7 @@
+C:\Users\user\source\repos\Bikes\Client\obj\Release\Client.csprojResolveAssemblyReference.cache
+C:\Users\user\source\repos\Bikes\Client\obj\Release\Client.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\Bikes\Client\bin\Release\Client.exe.config
+C:\Users\user\source\repos\Bikes\Client\bin\Release\Client.exe
+C:\Users\user\source\repos\Bikes\Client\bin\Release\Client.pdb
+C:\Users\user\source\repos\Bikes\Client\obj\Release\Client.exe
+C:\Users\user\source\repos\Bikes\Client\obj\Release\Client.pdb
