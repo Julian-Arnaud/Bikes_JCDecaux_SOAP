@@ -22,7 +22,3 @@ Après appel de la méthode 2 GetStationsCity, les nouvelles données sont ajout
 #Monitoring
 
 L'application affiche des informations au fil des opérations pour donner plus d'informations à l'utilisateur.
-
--
--
--
