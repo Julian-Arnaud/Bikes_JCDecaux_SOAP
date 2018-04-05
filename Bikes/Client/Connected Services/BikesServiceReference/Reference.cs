@@ -12,7 +12,7 @@ namespace Client.BikesServiceReference {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BikesServiceReference.IServiceBikes")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BikesServiceReference.IServiceBikes", CallbackContract=typeof(Client.BikesServiceReference.IServiceBikesCallback))]
     public interface IServiceBikes {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceBikes/GetBikesTown", ReplyAction="http://tempuri.org/IServiceBikes/GetBikesTownResponse")]
@@ -32,6 +32,19 @@ namespace Client.BikesServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceBikes/GetStationsCity", ReplyAction="http://tempuri.org/IServiceBikes/GetStationsCityResponse")]
         System.Threading.Tasks.Task<string[]> GetStationsCityAsync(string city);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceBikes/SubscribeGetedBikesedEvent", ReplyAction="http://tempuri.org/IServiceBikes/SubscribeGetedBikesedEventResponse")]
+        void SubscribeGetedBikesedEvent();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceBikes/SubscribeGetedBikesedEvent", ReplyAction="http://tempuri.org/IServiceBikes/SubscribeGetedBikesedEventResponse")]
+        System.Threading.Tasks.Task SubscribeGetedBikesedEventAsync();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IServiceBikesCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceBikes/GetedBikesed")]
+        void GetedBikesed(string city, string station_name);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -40,25 +53,26 @@ namespace Client.BikesServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceBikesClient : System.ServiceModel.ClientBase<Client.BikesServiceReference.IServiceBikes>, Client.BikesServiceReference.IServiceBikes {
+    public partial class ServiceBikesClient : System.ServiceModel.DuplexClientBase<Client.BikesServiceReference.IServiceBikes>, Client.BikesServiceReference.IServiceBikes {
         
-        public ServiceBikesClient() {
+        public ServiceBikesClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public ServiceBikesClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public ServiceBikesClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public ServiceBikesClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public ServiceBikesClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public ServiceBikesClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public ServiceBikesClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public ServiceBikesClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
+        public ServiceBikesClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
         }
         
         public string GetBikesTown(string city, string station_number) {
@@ -83,6 +97,14 @@ namespace Client.BikesServiceReference {
         
         public System.Threading.Tasks.Task<string[]> GetStationsCityAsync(string city) {
             return base.Channel.GetStationsCityAsync(city);
+        }
+        
+        public void SubscribeGetedBikesedEvent() {
+            base.Channel.SubscribeGetedBikesedEvent();
+        }
+        
+        public System.Threading.Tasks.Task SubscribeGetedBikesedEventAsync() {
+            return base.Channel.SubscribeGetedBikesedEventAsync();
         }
     }
 }

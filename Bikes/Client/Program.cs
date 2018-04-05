@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,7 +27,14 @@ namespace Client
 
             //End cache
             ////////////
-            ServiceBikesClient iencli = new ServiceBikesClient();
+
+            ServiceBikesCallbackSink truc = new ServiceBikesCallbackSink();
+            InstanceContext context = new InstanceContext(truc);
+
+            ServiceBikesClient client = new ServiceBikesClient(context);
+            client.SubscribeGetedBikesedEvent();
+
+           // ServiceBikesClient iencli = new ServiceBikesClient();
             Console.WriteLine("The available commands are:\n" +
                 "1 (GetCities) to retrieve the list of cities which use Velib\n" +
                 "2 (GetStationsCity) to retrieve the list of the bikes stations of a given city\n" +
@@ -46,7 +54,7 @@ namespace Client
                         if(citiesList[0] == "")
                         {
                             Console.WriteLine("Retrieving list of cities from distant server...");
-                            citiesList = iencli.GetCities();
+                            citiesList = client.GetCities();
                         }
 
                         for (int i = 1; i < citiesList.Length; ++i)
@@ -75,7 +83,7 @@ namespace Client
                             else
                             {
                                 Console.WriteLine("Retrieving list of stations for city " + s+"...");
-                                string[] res2 = iencli.GetStationsCity(s);
+                                string[] res2 = client.GetStationsCity(s);
                                 for (int i = 0; i < res2.Length; ++i)
                                 {
                                     Console.WriteLine(res2[i]);
@@ -96,7 +104,7 @@ namespace Client
                         }
                         else
                         {
-                            string res3 = iencli.GetBikesTown(s, nb);
+                            string res3 = client.GetBikesTown(s, nb);
                             if(res3 == "")
                             {
                                 Console.WriteLine("Station not found, please try again");

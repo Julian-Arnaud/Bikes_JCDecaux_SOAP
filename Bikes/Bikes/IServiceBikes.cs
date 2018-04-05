@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Bikes
 {
-    [ServiceContract]
+    [ServiceContract(CallbackContract = typeof(IServiceBikesEvents))]
     public interface IServiceBikes
     {
         [OperationContract]
@@ -18,6 +18,9 @@ namespace Bikes
 
         [OperationContract]
         List<string> GetStationsCity(String city);
+
+        [OperationContract]
+        void SubscribeGetedBikesedEvent();
     }
 
 

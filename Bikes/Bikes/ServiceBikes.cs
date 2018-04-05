@@ -11,6 +11,14 @@ namespace Bikes
 {
     public class ServiceBikes : IServiceBikes
     {
+        static Action<string, string> event1 = delegate { };
+
+        public void SubscribeGetedBikesedEvent()
+        {
+            IServiceBikesEvents subscriber = OperationContext.Current.GetCallbackChannel<IServiceBikesEvents>();
+            event1 += subscriber.GetedBikesed;
+        }
+
         public String GetBikesTown(String city, String station_service)
         {
             WebRequest request = WebRequest.Create(
@@ -39,6 +47,7 @@ namespace Bikes
                 }
 
             }
+            event1(city, station_service);
             return res;
         }
 
