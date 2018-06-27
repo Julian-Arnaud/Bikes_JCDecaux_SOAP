@@ -24,7 +24,7 @@ namespace Client
             /*Stores map of <string, string[]> for every GetStationsCity(xxxxx) for the given xxxxx city*/
 
             Dictionary<string, string[]> citiesStations = new Dictionary<string, string[]>();
-
+			
             DateTime check = DateTime.Now;
             //End cache
             ////////////
@@ -50,6 +50,7 @@ namespace Client
                 if(now.Minutes > 2)
                 {
                     citiesList = client.GetCities();
+					check = DateTime.Now;
                 }
                 Console.WriteLine("Please enter your choice: ");
                 string s = Console.ReadLine();
@@ -118,19 +119,19 @@ namespace Client
                         }
                         else
                         {
-                            string res3 = client.GetBikesTown(s, nb);
 							DateTime start = DateTime.Now;
-                            if(res3 == "")
-                            {
-                                Console.WriteLine("Station not found, please try again");
-                            }
-                            else
-                            {
-                                Console.WriteLine("There is/are " + res3 + " available bike(s) at this station");
-                            }
+							string res3 = client.GetBikesTown(s, nb);
+							if(res3 == "")
+							{
+								Console.WriteLine("Station not found, please try again");
+							}
+							else
+							{
+								Console.WriteLine("There is/are " + res3 + " available bike(s) at this station");
+							}
 							DateTime end = DateTime.Now;
-                            TimeSpan resultT = end - start;
-                            Console.WriteLine("It took " + resultT.Milliseconds + "ms");
+							TimeSpan resultT = end - start;
+							Console.WriteLine("It took " + resultT.Milliseconds + "ms");
                         }
                         break;
                     case "4":
