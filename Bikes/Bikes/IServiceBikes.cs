@@ -20,7 +20,7 @@ namespace Bikes
         List<string> GetStationsCity(String city);
 
         [OperationContract]
-        void SubscribeGetedBikesedEvent();
+        void SubscribeGetedBikesedEvent(String city, String station);
     }
 
 

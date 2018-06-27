@@ -11,9 +11,9 @@ namespace Bikes
 {
     public class ServiceBikes : IServiceBikes
     {
-        static Action<string, string> event1 = delegate { };
+        static Action<string, string, string> event1 = delegate { };
 
-        public void SubscribeGetedBikesedEvent()
+        public void SubscribeGetedBikesedEvent(String city, String station)
         {
             IServiceBikesEvents subscriber = OperationContext.Current.GetCallbackChannel<IServiceBikesEvents>();
             event1 += subscriber.GetedBikesed;
@@ -47,7 +47,7 @@ namespace Bikes
                 }
 
             }
-            event1(city, station_service);
+            event1(city, station_service, res);
             return res;
         }
 

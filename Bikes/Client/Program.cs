@@ -25,6 +25,7 @@ namespace Client
 
             Dictionary<string, string[]> citiesStations = new Dictionary<string, string[]>();
 
+            DateTime check = DateTime.Now;
             //End cache
             ////////////
 
@@ -32,7 +33,7 @@ namespace Client
             InstanceContext context = new InstanceContext(truc);
 
             ServiceBikesClient client = new ServiceBikesClient(context);
-            client.SubscribeGetedBikesedEvent();
+            client.SubscribeGetedBikesedEvent("Rouen", "05- HOTEL DE VILLE");
 
            // ServiceBikesClient iencli = new ServiceBikesClient();
             Console.WriteLine("The available commands are:\n" +
@@ -45,6 +46,11 @@ namespace Client
             bool done = false;
             while(!done)
             {
+                TimeSpan now = DateTime.Now - check;
+                if(now.Minutes > 2)
+                {
+                    citiesList = client.GetCities();
+                }
                 Console.WriteLine("Please enter your choice: ");
                 string s = Console.ReadLine();
 
@@ -54,7 +60,11 @@ namespace Client
                         if(citiesList[0] == "")
                         {
                             Console.WriteLine("Retrieving list of cities from distant server...");
+                            DateTime start = DateTime.Now;
                             citiesList = client.GetCities();
+                            DateTime end = DateTime.Now;
+                            TimeSpan resultT = end - start;
+                            Console.WriteLine("It took " + resultT.Milliseconds + "ms");
                         }
 
                         for (int i = 1; i < citiesList.Length; ++i)
@@ -83,6 +93,7 @@ namespace Client
                             else
                             {
                                 Console.WriteLine("Retrieving list of stations for city " + s+"...");
+								DateTime start = DateTime.Now;
                                 string[] res2 = client.GetStationsCity(s);
                                 for (int i = 0; i < res2.Length; ++i)
                                 {
@@ -90,6 +101,9 @@ namespace Client
                                 }
                                 Console.WriteLine("Adding new information to dictionnary to grab info faster next time...");
                                 citiesStations.Add(s, res2);
+								DateTime end = DateTime.Now;
+								TimeSpan resultT = end - start;
+								Console.WriteLine("It took " + resultT.Milliseconds + "ms");
                             }
                         }                        
                         break;
@@ -105,6 +119,7 @@ namespace Client
                         else
                         {
                             string res3 = client.GetBikesTown(s, nb);
+							DateTime start = DateTime.Now;
                             if(res3 == "")
                             {
                                 Console.WriteLine("Station not found, please try again");
@@ -113,6 +128,9 @@ namespace Client
                             {
                                 Console.WriteLine("There is/are " + res3 + " available bike(s) at this station");
                             }
+							DateTime end = DateTime.Now;
+                            TimeSpan resultT = end - start;
+                            Console.WriteLine("It took " + resultT.Milliseconds + "ms");
                         }
                         break;
                     case "4":

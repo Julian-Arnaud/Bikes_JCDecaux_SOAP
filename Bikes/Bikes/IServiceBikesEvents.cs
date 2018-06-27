@@ -10,6 +10,6 @@ namespace Bikes
     public interface IServiceBikesEvents
     {
         [OperationContract(IsOneWay = true)]
-        void GetedBikesed(string city, string station_name);
+        void GetedBikesed(string city, string station_name, string nb_bikes);
     }
 }

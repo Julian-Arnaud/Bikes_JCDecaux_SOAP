@@ -34,17 +34,17 @@ namespace Client.BikesServiceReference {
         System.Threading.Tasks.Task<string[]> GetStationsCityAsync(string city);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceBikes/SubscribeGetedBikesedEvent", ReplyAction="http://tempuri.org/IServiceBikes/SubscribeGetedBikesedEventResponse")]
-        void SubscribeGetedBikesedEvent();
+        void SubscribeGetedBikesedEvent(string city, string station);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceBikes/SubscribeGetedBikesedEvent", ReplyAction="http://tempuri.org/IServiceBikes/SubscribeGetedBikesedEventResponse")]
-        System.Threading.Tasks.Task SubscribeGetedBikesedEventAsync();
+        System.Threading.Tasks.Task SubscribeGetedBikesedEventAsync(string city, string station);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IServiceBikesCallback {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IServiceBikes/GetedBikesed")]
-        void GetedBikesed(string city, string station_name);
+        void GetedBikesed(string city, string station_name, string nb_bikes);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -99,12 +99,12 @@ namespace Client.BikesServiceReference {
             return base.Channel.GetStationsCityAsync(city);
         }
         
-        public void SubscribeGetedBikesedEvent() {
-            base.Channel.SubscribeGetedBikesedEvent();
+        public void SubscribeGetedBikesedEvent(string city, string station) {
+            base.Channel.SubscribeGetedBikesedEvent(city, station);
         }
         
-        public System.Threading.Tasks.Task SubscribeGetedBikesedEventAsync() {
-            return base.Channel.SubscribeGetedBikesedEventAsync();
+        public System.Threading.Tasks.Task SubscribeGetedBikesedEventAsync(string city, string station) {
+            return base.Channel.SubscribeGetedBikesedEventAsync(city, station);
         }
     }
 }
